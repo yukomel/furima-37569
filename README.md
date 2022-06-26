@@ -39,11 +39,11 @@
 |--------------------------|------------|--------------------------------|
 | name                     | string     | null: false                    |
 | description	             | text       | null: false                    |
-| category_id              | integer    | null: false, foreign_key: true |
-| status_id                | integer    | null: false, foreign_key: true |
-| shopping_cost_id         | integer    | null: false, foreign_key: true |
-| prefecture_id            | integer    | null: false, foreign_key: true |
-| shopping_day_id          | integer    | null: false, foreign_key: true |
+| category_id              | integer    | null: false                    |
+| status_id                | integer    | null: false                    |
+| shopping_cost_id         | integer    | null: false                    |
+| prefecture_id            | integer    | null: false                    |
+| shopping_day_id          | integer    | null: false                    |
 | price                    | integer    | null: false                    |
 | user                     | references | null: false, foreign_key: true |
 
