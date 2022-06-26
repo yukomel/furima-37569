@@ -39,18 +39,18 @@
 |--------------------------|------------|--------------------------------|
 | name                     | string     | null: false                    |
 | description	             | text       | null: false                    |
-| category_id              | integer    | null: false                    |
-| status_id                   | string     | null: false                    |
-| shopping_cost_id            | string     | null: false                    |
-| prefecture_id            | integer    | null: false                    |
-| shopping_day_id            | string     | null: false                    |
+| category_id              | integer    | null: false, foreign_key: true |
+| status_id                | integer    | null: false, foreign_key: true |
+| shopping_cost_id         | integer    | null: false, foreign_key: true |
+| prefecture_id            | integer    | null: false, foreign_key: true |
+| shopping_day_id          | integer    | null: false, foreign_key: true |
 | price                    | integer    | null: false                    |
 | user                     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :history
+- has_one :history
 
 
 ## addresses table
@@ -63,7 +63,7 @@
 | address            | string     | null: false                    |
 | building_name	     | string     |                                |
 | phone_number       | string     | null: false                    |
-| product            | references | null: false, foreign_key: true |
+| history            | references | null: false, foreign_key: true |
 
 ### Association
 
