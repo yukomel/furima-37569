@@ -16,10 +16,10 @@
 ### Association
 
 - has_many :products
-- has_many :histories
+- has_many :orders
 
 
-## histories table
+## orders table
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
@@ -50,21 +50,21 @@
 ### Association
 
 - belongs_to :user
-- has_one :history
+- has_one :order
 
 
 ## addresses table
 
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
-| post_code	         | string     | null: false                    |
+| code               | string     | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
-| building_name	     | string     |                                |
-| phone_number       | string     | null: false                    |
-| history            | references | null: false, foreign_key: true |
+| building           | string     |                                |
+| phone              | string     | null: false                    |
+| order              | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :history
+- belongs_to :order
