@@ -9,7 +9,7 @@ class OrderAddress
     validates :phone, format: {with: /\A\d{10,11}\z/}
     validates :user_id
     validates :product_id
-    validates :token,  presence: true
+    validates :token
   end
 
   def save
@@ -21,7 +21,7 @@ class OrderAddress
       address: address, 
       building: building,
       phone: phone,
-      order_id: order)
+      order_id: order.id)
    end
    
 end
