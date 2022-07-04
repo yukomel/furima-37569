@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
 
 
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if current_user != @product.user
+    if current_user != @product.user || @product.order.present?
       redirect_to root_path
     end
   end
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name,:description,:category_id,:status_id,:price,:shopping_cost_id,:prefecture_id,:shopping_day_id, :image).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :status_id, :price, :shopping_cost_id, :prefecture_id, :shopping_day_id, :image).merge(user_id: current_user.id)
   end
 
   def set_product
