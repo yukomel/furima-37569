@@ -4,9 +4,10 @@ RSpec.describe OrderAddress, type: :model do
   describe '商品購入機能' do
 
     before do
-      @product = FactoryBot.create(:product)
       @user = FactoryBot.create(:user)
-      @order_address = FactoryBot.build(:order_address, user_id: user.id, product_id: product.id)
+      @product = FactoryBot.create(:product)
+      @order_address = FactoryBot.build(:order_address, user_id: @user.id, product_id: @product.id)
+      sleep (1)
     end
   
     context '商品購入がうまくいくとき' do
@@ -35,7 +36,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "Code is invalid. Include hyphen(-)"
       end
 
-      it 'area_idが空だと登録できない' do
+      it 'prefecture_idが空だと登録できない' do
         @order_address.prefecture_id = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include "Prefecture can't be blank"
@@ -47,7 +48,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "Prefecture can't be blank"
       end
 
-      it 'municipalityが空だと登録できない' do
+      it 'cityが空だと登録できない' do
         @order_address.city = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include "City can't be blank"
@@ -59,7 +60,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "Address can't be blank"
       end
 
-      it 'telephoneが空だと登録できない' do
+      it 'phoneが空だと登録できない' do
         @order_address.phone = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include "Phone can't be blank"
@@ -89,7 +90,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "User can't be blank"
       end
 
-      it 'itemが紐付いていないと登録できない' do
+      it 'productが紐付いていないと登録できない' do
         @order_address.product_id = nil
         @order_address.valid?
           expect(@order_address.errors.full_messages).to include "Product can't be blank"
