@@ -1,9 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :product_find
+  before_action :product_find, only: [:index, :create]
 
   def index
-    product_find
     @order_address = OrderAddress.new
     if current_user == @product.user || @product.order.present?
       redirect_to root_path
@@ -11,7 +10,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    product_find
     @order_address = OrderAddress.new(order_address_params)
     if @order_address.valid?
       pay_item
