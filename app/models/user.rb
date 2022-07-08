@@ -14,6 +14,13 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Password Include both letters and numbers' 
 
+  def already_favorited?(product)
+    self.favorites.exists?(product_id: product.id)
+  end
+
   has_many :products
   has_many :orders
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_products, through: :favorites, source: :product
+
 end

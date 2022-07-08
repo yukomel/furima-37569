@@ -147,7 +147,9 @@
                   <span><%= product.price %>円<br><%= product.shopping_cost.name %></span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
-                    <span class='star-count'>0</span>
+                    <span class='star-count'>
+                    <%= product.favorites.count %>
+                    </span>
                   </div>
                 </div>
               </div>

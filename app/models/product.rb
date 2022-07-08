@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one :order
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   with_options presence: true do
     validates :name

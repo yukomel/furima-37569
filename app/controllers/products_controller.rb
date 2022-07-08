@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy,]
   before_action :move_to_index, only: [:edit, :destroy]
 
 
   def index
     @products = Product.order("created_at DESC")
+    @favorite = Favorite.new
   end
 
   def new
@@ -22,7 +23,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @favorite = Favorite.new
+    if @product.order.present?
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -43,6 +47,10 @@ class ProductsController < ApplicationController
   def destroy
       @product.destroy
       redirect_to root_path
+  end
+
+  def favorite
+    @favorites = current_user.favorites(params[:id])
   end
 
   private
