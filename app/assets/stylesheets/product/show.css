@@ -117,6 +117,18 @@
   margin-right: 20px;
 }
 
+.nofavorite-btn {
+  border-radius: 40px;
+  width: 15vw;
+  min-width: 200px;
+  color: rgb(249, 75, 0);
+  border: 2px solid #7dc3f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
 .favorite-star-icon {
   margin-right: 5px;
 }

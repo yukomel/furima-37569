@@ -67,8 +67,8 @@
     <% if user_signed_in?  %>
      <div class="option">
       <% if current_user.favorites.find_by(product_id: @product.id) %>
-        <div class="favorite-btn">
-          <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <div class="nofavorite-btn">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
             <p><span>お気に入り解除: </span><%=link_to @product.favorites.count, product_favorite_path(@product), method: :delete %></p>
         </div>
       <% else %>
